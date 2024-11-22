@@ -1,26 +1,25 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using tp4.Models;
 using tp4.Services.ServiceContracts;
 
 namespace tp4.Controllers
 {
-    [Route("Movie")]
-    public class MoviesController
+    [Route("Movies")]
+    public class MovieController : Controller
     {
         private readonly IMovieService _movieService;
 
-        public MoviesController(IMovieService movieService)
+        public MovieController(IMovieService movieService)
+
         {
-            _movieService = movieService;
+            _movieService = movieService
+        ;
         }
 
         public IActionResult Index()
         {
-            var movies = _movieService.GetAllMovies();
+            var customers = _movieService.GetAllMovies();
 
-            return View(movies);
+            return View(customers);
         }
 
 

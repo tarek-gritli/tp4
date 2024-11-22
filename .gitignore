@@ -4,12 +4,7 @@ obj/
 build/
 out/
 
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-*.swp
+
 
 # Log files
 *.log

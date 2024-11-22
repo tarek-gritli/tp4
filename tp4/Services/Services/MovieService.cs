@@ -1,6 +1,8 @@
 using tp4.Models;
 using tp4.Repositories;
 using tp4.Services.ServiceContracts;
+using System.Linq;
+
 
 namespace tp4.Services
 {
@@ -16,6 +18,16 @@ namespace tp4.Services
         public IEnumerable<Movie> GetAllMovies()
         {
             return _movieRepository.GetAll();
+        }
+
+        public IEnumerable<Movie> GetAllMoviesSorted()
+        {
+            return _movieRepository.GetAll().OrderBy(m => m.Name).ToList();
+        }
+
+        public IEnumerable<Movie> GetMoviesByGenre(Guid genreId)
+        {
+            return _movieRepository.GetMoviesByGenre(genreId);
         }
 
         public Movie GetMovieById(int id)

@@ -2,35 +2,26 @@ using tp4.Models;
 
 namespace tp4.Repositories
 {
-    public class MovieRepository : IMovieRepository
+
+    public interface IMovieRepository : IGenericRepository<Movie>
+    {
+        Movie GetById(int id);
+
+        IEnumerable<Movie> GetMoviesByGenre(Guid genreId);
+        void Delete(int id);
+    }
+    public class MovieRepository : GenericRepository<Movie>, IMovieRepository
     {
         private readonly ApplicationDbContext _db;
-        public MovieRepository(ApplicationDbContext dbContext)
+        public MovieRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
             _db = dbContext;
-        }
-
-        public IEnumerable<Movie> GetAll()
-        {
-            return _db.Movies.ToList();
         }
 
         public Movie GetById(int id)
         {
 
             return _db.Movies.Find(id);
-        }
-
-        public void Add(Movie movie)
-        {
-            _db.Movies.Add(movie);
-            _db.SaveChanges();
-        }
-
-        public void Update(Movie movie)
-        {
-            _db.Movies.Update(movie);
-            _db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -41,6 +32,11 @@ namespace tp4.Repositories
                 _db.Movies.Remove(movie);
                 _db.SaveChanges();
             }
+        }
+
+        public IEnumerable<Movie> GetMoviesByGenre(Guid genreId)
+        {
+            return _db.Movies.Where(m => m.GenreId == genreId).ToList();
         }
     }
 }
