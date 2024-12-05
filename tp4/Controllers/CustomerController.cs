@@ -3,7 +3,7 @@ using tp4.Services.ServiceContracts;
 
 namespace tp4.Controllers
 {
-    [Route("Customers")]
+    [Route("Customer")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;

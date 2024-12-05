@@ -4,7 +4,7 @@ using tp4.Services.ServiceContracts;
 
 namespace tp4.Controllers
 {
-    [Route("Genres")]
+    [Route("Genre")]
     public class GenresController : Controller
     {
         private readonly IGenreService _genreService;

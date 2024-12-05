@@ -3,7 +3,7 @@ using tp4.Services.ServiceContracts;
 
 namespace tp4.Controllers
 {
-    [Route("Movies")]
+    [Route("Movie")]
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;
@@ -17,9 +17,9 @@ namespace tp4.Controllers
 
         public IActionResult Index()
         {
-            var customers = _movieService.GetAllMovies();
+            var movies = _movieService.GetAllMovies();
 
-            return View(customers);
+            return View(movies);
         }
 
 
